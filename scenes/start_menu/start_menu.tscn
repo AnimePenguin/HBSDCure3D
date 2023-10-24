@@ -1,0 +1,197 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4nf7hj6a7i12"]
+
+[ext_resource type="Script" path="res://scenes/start_menu/start_menu.gd" id="1_m53ef"]
+[ext_resource type="AudioStream" uid="uid://12c12h7g85ly" path="res://assets/sounds/title_theme.ogg" id="2_aljvf"]
+[ext_resource type="PackedScene" uid="uid://bis15ccgjlfvp" path="res://scenes/aaron/aaron.tscn" id="3_rlqwr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k51og"]
+
+[sub_resource type="Sky" id="Sky_xs2uh"]
+sky_material = SubResource("ProceduralSkyMaterial_k51og")
+
+[sub_resource type="Environment" id="Environment_66ek1"]
+background_mode = 2
+sky = SubResource("Sky_xs2uh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71a3y"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1loqx"]
+material = SubResource("StandardMaterial3D_71a3y")
+size = Vector2(20, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nlwl"]
+albedo_color = Color(0.670588, 0.584314, 0.176471, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="TextMesh" id="TextMesh_upjwb"]
+material = SubResource("StandardMaterial3D_8nlwl")
+text = "HBSD
+Cure"
+font_size = 48
+line_spacing = -12.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8j3s"]
+albedo_color = Color(0.611765, 0, 0.0823529, 1)
+clearcoat_enabled = true
+
+[sub_resource type="TextMesh" id="TextMesh_w8k4t"]
+material = SubResource("StandardMaterial3D_f8j3s")
+text = "3D"
+font_size = 60
+depth = 0.1
+
+[sub_resource type="Animation" id="Animation_ao0r8"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpinningText")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, 0.707, 0, 0.707, 2, 1, 0, 1, 0, 0, 3, 1, 0, -0.707, 0, 0.707, 4, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_uxlq4"]
+resource_name = "startup"
+length = 3.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 2, 0, 1.1, 1, 0, 0.433005, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpinningText")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(1.8, 1, 0, -2, 0, 2.9, 1, 0, -0.435448, 0)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["spin", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -4.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sensitivity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwnxc"]
+_data = {
+"spin": SubResource("Animation_ao0r8"),
+"startup": SubResource("Animation_uxlq4")
+}
+
+[node name="StartMenu" type="Node3D"]
+script = ExtResource("1_m53ef")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_66ek1")
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.13133)
+mesh = SubResource("PlaneMesh_1loqx")
+
+[node name="Title" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99991, 0.0134531, 0, -0.0134531, 0.99991, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("TextMesh_upjwb")
+
+[node name="SpinningText" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("TextMesh_w8k4t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.95881, 0.246826, 0.140571, -0.278468, 0.719181, 0.63658, 0.0560285, -0.649504, 0.758291, 0.174772, 3.25555, 2.67697)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.120026, 1.83489)
+current = true
+
+[node name="StartInfo" type="Label" parent="."]
+offset_left = 527.0
+offset_top = 591.0
+offset_right = 753.0
+offset_bottom = 628.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Press space to start"
+
+[node name="Sensitivity" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = 266.0
+offset_right = 142.0
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Sensitivity"]
+layout_mode = 2
+text = "Sensitvity:"
+
+[node name="Slider" type="HSlider" parent="Sensitivity"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+min_value = 0.1
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "startup"
+libraries = {
+"": SubResource("AnimationLibrary_bwnxc")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_aljvf")
+volume_db = -15.0
+autoplay = true
+
+[node name="Aaron" parent="." instance=ExtResource("3_rlqwr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.946188, -0.911967)
+
+[connection signal="drag_ended" from="Sensitivity/Slider" to="." method="_on_slider_drag_ended"]

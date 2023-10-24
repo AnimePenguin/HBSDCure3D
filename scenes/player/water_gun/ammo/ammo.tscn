@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://rwqh24drp4r8"]
+
+[ext_resource type="Script" path="res://scenes/player/water_gun/ammo/ammo.gd" id="1_6h0hi"]
+[ext_resource type="ArrayMesh" uid="uid://r12t32blro2u" path="res://assets/weapons/water.res" id="1_qcioy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_axbto"]
+
+[sub_resource type="Animation" id="Animation_u3gad"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 1, 0, 0.707, 0, 0.707, 2, 1, 0, 1, 0, 0, 3, 1, 0, -0.707, 0, 0.707, 4, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nh7w3"]
+_data = {
+"spin": SubResource("Animation_u3gad")
+}
+
+[node name="Ammo" type="Area3D"]
+script = ExtResource("1_6h0hi")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Water" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(120, 0, 0, 0, 77.1345, 91.9253, 0, -91.9253, 77.1345, 0, 0, 0)
+mesh = ExtResource("1_qcioy")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428929, 0.0173721)
+shape = SubResource("BoxShape3D_axbto")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_nh7w3")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

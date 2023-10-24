@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8p0nn2raagv8"]
+
+[ext_resource type="Script" path="res://scenes/player/water_gun/water_gun.gd" id="1_8v2aj"]
+[ext_resource type="ArrayMesh" uid="uid://m5csn2vc8llq" path="res://assets/weapons/water_gun.res" id="2_jww7k"]
+[ext_resource type="AudioStream" uid="uid://dn6wbxhgr5r0y" path="res://assets/sounds/reload.ogg" id="3_k6v41"]
+[ext_resource type="AudioStream" uid="uid://c68dg4wuuwau0" path="res://assets/sounds/shots/shot1.ogg" id="4_p1v3p"]
+[ext_resource type="AudioStream" uid="uid://dxrwqqbmfw4nr" path="res://assets/sounds/shots/shot2.ogg" id="5_3kj1u"]
+[ext_resource type="AudioStream" uid="uid://6s03d2mw4fw5" path="res://assets/sounds/shots/shot3.ogg" id="6_8kggd"]
+
+[sub_resource type="Animation" id="Animation_ljo5m"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_co1ob"]
+resource_name = "reload"
+length = 2.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, -0.5, 0, 0, 1.5, 1, -0.5, 0, 0, 2, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.6, 1, 0, 0, 0.707, 0.707, 1.4, 1, 0, 0, 0.707, 0.707, 2, 1, 0, 0, 0, 1)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ReloadSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jr7v7"]
+resource_name = "shoot"
+length = 0.15
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.075, 1, -0.1, 0, 0, 0.15, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.075, 1, 0, 0, 0.044, 0.999, 0.15, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kitpe"]
+_data = {
+"RESET": SubResource("Animation_ljo5m"),
+"reload": SubResource("Animation_co1ob"),
+"shoot": SubResource("Animation_jr7v7")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsjwl"]
+bg_color = Color(0.14902, 0.14902, 0.14902, 0.72549)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6y5vy"]
+streams_count = 3
+random_volume_offset_db = 2.0
+stream_0/stream = ExtResource("4_p1v3p")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_3kj1u")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_8kggd")
+stream_2/weight = 1.0
+
+[node name="WaterGun" type="Node3D"]
+transform = Transform3D(-0.173648, 8.19564e-08, 0.984808, 0.14485, 0.989124, 0.0255408, -0.974097, 0.147085, -0.171759, 0.4, -0.316899, -0.517015)
+script = ExtResource("1_8v2aj")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("2_jww7k")
+
+[node name="BulletSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 4.47035e-08, 2.98023e-08, 0, 1, -3.72529e-08, 0, -1.67638e-08, 1, 0.312, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kitpe")
+}
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -75.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gsjwl")
+
+[node name="AmmoLabel" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(75, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReloadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k6v41")
+volume_db = -14.0
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_6y5vy")
+volume_db = -20.0

@@ -1,0 +1,193 @@
+[gd_scene load_steps=14 format=3 uid="uid://c42dfx351du8k"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_i7nir"]
+[ext_resource type="PackedScene" uid="uid://b8p0nn2raagv8" path="res://scenes/player/water_gun/water_gun.tscn" id="2_dhwjb"]
+[ext_resource type="PackedScene" uid="uid://dlb2v2oel5p76" path="res://scenes/player/dagger/dagger.tscn" id="3_odbbd"]
+[ext_resource type="AudioStream" uid="uid://n48exqy6n4tm" path="res://assets/sounds/bottle_collect.ogg" id="4_86d0r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_krhps"]
+radius = 0.4
+height = 1.7
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hwncm"]
+points = PackedVector3Array(0.369278, 0.552884, -0.108301, -0.386354, -0.529776, -0.0581781, -0.388014, -0.532023, 0.0427476, 0.347952, -0.635442, -0.0586604, 0.0172632, 0.479986, 0.396519, -0.207674, 0.524749, -0.332587, 0.0427471, -0.532016, -0.388008, 0.1921, -0.524556, 0.341986, -0.313205, 0.686594, 0.0682163, -0.207607, -0.574508, 0.31706, -0.11195, -0.830329, 0.0436658, 0.321874, 0.583363, 0.194999, 0.144367, 0.685257, -0.287161, -0.308045, 0.525439, 0.242462, 0.0695376, 0.830854, 0.0955425, -0.232489, -0.549322, -0.307454, -0.38459, 0.452022, -0.108202, 0.242462, -0.525439, -0.308045, 0.393751, -0.451601, 0.0673596, 0.167359, 0.500138, -0.357932, 0.0434242, -0.799326, -0.188628, 0.171016, -0.767078, 0.171016, -0.111008, 0.797829, -0.162565, -0.0580393, -0.45307, 0.395016, -0.158306, 0.576854, 0.343382, -0.0833949, 0.504196, -0.386128, 0.192099, 0.524552, 0.341984, 0.339937, -0.471595, -0.206305, 0.31442, -0.495321, 0.240069, 0.222795, 0.769303, -0.0849112, -0.237565, -0.739738, -0.135525, -0.384084, 0.50156, 0.0924578)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xg0d6"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_bjfco"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_xg0d6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bv6ii"]
+bg_color = Color(0.521569, 0.054902, 0.113725, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4tym"]
+bg_color = Color(0.0156863, 0.231373, 0.439216, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="Animation" id="Animation_da5i8"]
+resource_name = "swap_weapons"
+length = 0.6
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Weapon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.2, 1, 0, -0.5, 0, 0.4, 1, 0, -0.5, 0, 0.6, 1, 0, 0, 0)
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swap_gun"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iem6y"]
+resource_name = "wobble_head"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.18, -0.18, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsqpc"]
+_data = {
+"swap_weapons": SubResource("Animation_da5i8"),
+"wobble_head": SubResource("Animation_iem6y")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_i7nir")
+weapon_scenes = Array[PackedScene]([ExtResource("2_dhwjb"), ExtResource("3_odbbd")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_krhps")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_hwncm")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Third" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.939292, 0.343119, 0, -0.343119, 0.939292, 0, 0.976055, 2.70877)
+
+[node name="First" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+current = true
+
+[node name="Weapon" type="Node3D" parent="Head"]
+
+[node name="Bars" type="VBoxContainer" parent="."]
+offset_left = 13.0
+offset_top = 626.0
+offset_right = 213.0
+offset_bottom = 720.0
+theme = SubResource("Theme_bjfco")
+theme_override_constants/separation = 10
+
+[node name="Health" type="ProgressBar" parent="Bars"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_bv6ii")
+step = 0.1
+value = 100.0
+show_percentage = false
+
+[node name="Stamina" type="ProgressBar" parent="Bars"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_w4tym")
+max_value = 75.0
+step = 0.1
+value = 75.0
+show_percentage = false
+
+[node name="GameOverScreen" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Stats" type="Label" parent="GameOverScreen"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Stats:
+Time: %d secs
+You Killed %d Aarons"
+horizontal_alignment = 1
+
+[node name="StaminaTick" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="StaminaHealDelay" type="Timer" parent="."]
+wait_time = 1.25
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vsqpc")
+}
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_86d0r")
+
+[connection signal="changed" from="Bars/Health" to="." method="_on_health_changed"]
+[connection signal="changed" from="Bars/Stamina" to="." method="_on_stamina_changed"]

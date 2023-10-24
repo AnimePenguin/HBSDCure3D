@@ -1,0 +1,219 @@
+[gd_scene load_steps=16 format=3 uid="uid://dlb2v2oel5p76"]
+
+[ext_resource type="Script" path="res://scenes/player/dagger/dagger.gd" id="1_1abp1"]
+[ext_resource type="ArrayMesh" uid="uid://cnax6pkwxhn0g" path="res://assets/weapons/dagger.res" id="2_ghae0"]
+[ext_resource type="AudioStream" uid="uid://cyhprsfeijlkf" path="res://assets/sounds/slash/slash1.ogg" id="3_gbdpv"]
+[ext_resource type="AudioStream" uid="uid://b1w0hucgw74qm" path="res://assets/sounds/slash/slash2.ogg" id="4_divkc"]
+[ext_resource type="AudioStream" uid="uid://bohi4ukb8ar78" path="res://assets/sounds/slash/slash_big.ogg" id="5_7socs"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fddl7"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+spread = 50.0
+gravity = Vector3(0, 9.8, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijrpu"]
+albedo_color = Color(0.631373, 0, 0.0392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ex8w"]
+material = SubResource("StandardMaterial3D_ijrpu")
+radius = 0.02
+height = 0.04
+radial_segments = 4
+rings = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hvc1b"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_0k2ot"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_fq8ry"]
+resource_name = "swing1"
+length = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.1, 1, 0.0324299, -0.437467, -0.00768186, 0.3, 1, -0.0654544, 0.693564, 0.00632872, 0.5, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.462, 0.029, 0.193, 0.865, 0.3, 1, -0.0525848, 0.434141, 0.812738, 0.384984, 0.5, 1, 0, 0, 0, 1)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [25],
+"method": &"hit_enemy"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LightSlashAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_87wqy"]
+resource_name = "swing2"
+length = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.1, 1, -0.0417855, 0.895868, -0.0434569, 0.3, 1, 0.0319536, -0.252396, 0.103436, 0.5, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, -0.363937, -0.09712, -0.57086, 0.729545, 0.3, 1, 0.00128619, -0.430646, 0.818008, -0.38132, 0.5, 1, 0, 0, 0, 1)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [25],
+"method": &"hit_enemy"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LightSlashAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_luw5k"]
+resource_name = "swing_heavy"
+length = 0.8
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, -0.0559266, -0.0136098, 0.538949, 0.4, 1, 0.365848, 0.0305815, -0.197092, 0.8, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.3, 1, -0.0172041, 0.232077, 0.00407524, 0.972537, 0.4, 1, -0.0529576, 0.714378, 0.0125444, 0.69764, 0.8, 1, 0, 0, 0, 1)
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [30],
+"method": &"hit_enemy"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeavySlashAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtofd"]
+_data = {
+"RESET": SubResource("Animation_0k2ot"),
+"swing1": SubResource("Animation_fq8ry"),
+"swing2": SubResource("Animation_87wqy"),
+"swing_heavy": SubResource("Animation_luw5k")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p8vft"]
+streams_count = 2
+stream_0/stream = ExtResource("3_gbdpv")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_divkc")
+stream_1/weight = 1.0
+
+[node name="Dagger" type="Area3D"]
+transform = Transform3D(0.0739169, -0.997111, -0.0175091, -0.384256, -0.0446781, 0.922145, -0.920263, -0.0614341, -0.386448, 0.413142, -0.340665, -0.415447)
+script = ExtResource("1_1abp1")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(39.9998, 0, 0, 0, 39.9999, 0, 0, 0, 39.9998, 0, 0, 0)
+mesh = ExtResource("2_ghae0")
+
+[node name="Blood" type="GPUParticles3D" parent="Mesh"]
+transform = Transform3D(0.025, -1.74623e-09, -1.76951e-08, -1.16415e-10, 0.025, 3.43425e-09, 1.86265e-09, 1.16415e-09, 0.025, 0.000113216, 0.000156187, 0.00830409)
+emitting = false
+amount = 32
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fddl7")
+draw_pass_1 = SubResource("SphereMesh_1ex8w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, -2.08616e-07, 3.72529e-09, 1, -3.72529e-09, -8.9407e-08, -5.58794e-09, 1, 0.368595, 0.260309, 0.349475)
+shape = SubResource("BoxShape3D_hvc1b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_default_blend_time = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_gtofd")
+}
+
+[node name="LightSlashAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_p8vft")
+
+[node name="HeavySlashAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7socs")
+volume_db = -8.0
