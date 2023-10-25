@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://clh8c6bokd6uv"
+path="res://.godot/imported/columnPaint.obj-e2a2cf00b534477d0097d72ee49e5d18.mesh"
+
+[deps]
+
+files=["res://.godot/imported/columnPaint.obj-e2a2cf00b534477d0097d72ee49e5d18.mesh"]
+
+source_file="res://assets/medieval/columnPaint.obj"
+dest_files=["res://.godot/imported/columnPaint.obj-e2a2cf00b534477d0097d72ee49e5d18.mesh", "res://.godot/imported/columnPaint.obj-e2a2cf00b534477d0097d72ee49e5d18.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(4, 4, 4)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d1iigk01t6pek"
+path="res://.godot/imported/overhang_round.obj-fca7ee5efa656c9762ee4e40750876bc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/overhang_round.obj-fca7ee5efa656c9762ee4e40750876bc.mesh"]
+
+source_file="res://assets/medieval/overhang_round.obj"
+dest_files=["res://.godot/imported/overhang_round.obj-fca7ee5efa656c9762ee4e40750876bc.mesh", "res://.godot/imported/overhang_round.obj-fca7ee5efa656c9762ee4e40750876bc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(4, 4, 4)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
