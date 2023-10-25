@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cicycm68ap20h"
+path="res://.godot/imported/detail_barrel.obj-e78ecd1915309f9146489e5d792a9796.mesh"
+
+[deps]
+
+files=["res://.godot/imported/detail_barrel.obj-e78ecd1915309f9146489e5d792a9796.mesh"]
+
+source_file="res://assets/medieval/detail_barrel.obj"
+dest_files=["res://.godot/imported/detail_barrel.obj-e78ecd1915309f9146489e5d792a9796.mesh", "res://.godot/imported/detail_barrel.obj-e78ecd1915309f9146489e5d792a9796.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(4, 4, 4)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

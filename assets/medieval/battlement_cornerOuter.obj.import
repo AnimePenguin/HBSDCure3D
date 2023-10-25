@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://qwcsba6fat7t"
+path="res://.godot/imported/battlement_cornerOuter.obj-39c95c1ace36db3bae1881cb3973d4e9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/battlement_cornerOuter.obj-39c95c1ace36db3bae1881cb3973d4e9.mesh"]
+
+source_file="res://assets/medieval/battlement_cornerOuter.obj"
+dest_files=["res://.godot/imported/battlement_cornerOuter.obj-39c95c1ace36db3bae1881cb3973d4e9.mesh", "res://.godot/imported/battlement_cornerOuter.obj-39c95c1ace36db3bae1881cb3973d4e9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(4, 4, 4)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
