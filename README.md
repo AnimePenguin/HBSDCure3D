@@ -1,5 +1,7 @@
-# HBSDCure3D
+# HBSD Cure 3D
 A joke FPS game made in Godot 4
+
+[Play on Web (itch.io)](https://potatoslate.itch.io/stress-reliever)
 
 ## Assets
 - [Medieval Building Assets](https://kenney.nl/assets/retro-medieval-kit)
