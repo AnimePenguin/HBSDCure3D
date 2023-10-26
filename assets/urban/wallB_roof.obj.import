@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c55mxk54bhql5"
+path="res://.godot/imported/wallB_roof.obj-8fe0491eb26b98c29fe4cf0305990e1c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallB_roof.obj-8fe0491eb26b98c29fe4cf0305990e1c.mesh"]
+
+source_file="res://assets/urban/wallB_roof.obj"
+dest_files=["res://.godot/imported/wallB_roof.obj-8fe0491eb26b98c29fe4cf0305990e1c.mesh", "res://.godot/imported/wallB_roof.obj-8fe0491eb26b98c29fe4cf0305990e1c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(4, 4, 4)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

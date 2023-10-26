@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3v1ac6jx5rlj"
+path="res://.godot/imported/wallA_painted.obj-037a4e38a5aab30e2da804dc213421b3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallA_painted.obj-037a4e38a5aab30e2da804dc213421b3.mesh"]
+
+source_file="res://assets/urban/wallA_painted.obj"
+dest_files=["res://.godot/imported/wallA_painted.obj-037a4e38a5aab30e2da804dc213421b3.mesh", "res://.godot/imported/wallA_painted.obj-037a4e38a5aab30e2da804dc213421b3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(4, 4, 4)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
